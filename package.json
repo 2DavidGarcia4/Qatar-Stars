@@ -1,0 +1,23 @@
+{
+  "name": "futbol",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npm src/.",
+    "dev": "nodemon src/."
+  },
+  "keywords": [],
+  "author": "David Garcia",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.5.0",
+    "dotenv": "^16.0.3",
+    "mongoose": "^6.6.5",
+    "node-fetch": "^3.2.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
