@@ -54,9 +54,9 @@ bot.on('ready', async () => {
   // const liveScoreNowsUrl = 'https://soccer.sportmonks.com/api/v2.0/fixtures/between/2022-10-10/2022-11-01?api_token='+tokenFotball
 
   setInterval(async ()=> {
-    console.log('haa')
+    // console.log('haa')
     if(liveScores.length == 0){
-      console.log('Snac')
+      // console.log('Snac')
       fetch(liveScoreNowsUrl).then(prom=> prom.json()).then(async res=> {
         liveScores = res.data
         if(res.data.length > 0) live = true
@@ -144,7 +144,7 @@ bot.on('ready', async () => {
                 commentary = firsCommentary.order
                 laps++
               }
-            }, 10000)
+            }, 60000)
           } catch (error) {
            console.log(error.message, error) 
           }
@@ -153,7 +153,7 @@ bot.on('ready', async () => {
       }).catch(err=> console.log(err))
     
     }
-  }, 30000)
+  }, 3*60000)
 })
 
 
