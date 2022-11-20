@@ -47,8 +47,8 @@ bot.on('ready', async () => {
 
   let liveScores = []
   let ejecution = false, commentary = 0, live = false
-  // const commentariesChannel = bot.channels.cache.get('1023973143821422653'), goalsChannel = bot.channels.cache.get('1023976964140302407')
-  const commentariesChannel = bot.channels.cache.get('897593930630197259'), goalsChannel = bot.channels.cache.get('897593930630197259')
+  const commentariesChannel = bot.channels.cache.get('1023973143821422653'), goalsChannel = bot.channels.cache.get('1023976964140302407')
+  // const commentariesChannel = bot.channels.cache.get('897593930630197259'), goalsChannel = bot.channels.cache.get('897593930630197259')
 
   const liveScoreNowsUrl = 'https://soccer.sportmonks.com/api/v2.0/livescores/now?api_token='+tokenFotball
   // const liveScoreNowsUrl = 'https://soccer.sportmonks.com/api/v2.0/fixtures/between/2022-10-10/2022-11-01?api_token='+tokenFotball
