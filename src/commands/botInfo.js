@@ -1,7 +1,7 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
-import { botDB } from "../db.js";
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { botDB } = require("../db");
 
-export const botInfoScb = new SlashCommandBuilder()
+const botInfoScb = new SlashCommandBuilder()
 .setName('botinfo')
 .setDescription('🤖 Information about me.')
 .setDescriptionLocalizations({
@@ -9,7 +9,7 @@ export const botInfoScb = new SlashCommandBuilder()
   'en-US': '🤖 Information about me.'
 }).toJSON()
 
-export const botInfoSlashCommand = async (int, client) => {
+const botInfoSlashCommand = async (int, client) => {
   const { locale } = int, isEn = locale == 'en-US'
   const developer = client.users.cache.get('717420870267830382')
 
@@ -18,4 +18,9 @@ export const botInfoSlashCommand = async (int, client) => {
   .setDescription(`${isEn ? 'Developed' : 'Desarrollado'} <t:${Math.floor(client.user.createdAt/1000)}:R> ${isEn ? 'by' : 'por'} *${developer.tag}* ${isEn ? 'member of' : 'miembro de'} [**Reverse Group**](https://discord.gg/RpgPWUqc4U)`)
   .setColor(botDB.color)
   int.reply({ephemeral: true, embeds: [botInfo]})
+}
+
+module.exports = {
+  botInfoScb,
+  botInfoSlashCommand
 }

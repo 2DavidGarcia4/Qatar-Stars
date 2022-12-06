@@ -1,9 +1,9 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
-import { botDB } from "../db.js";
-import { qatarStarsDb } from "../models/index.js";
-import { toListTeam } from "../utils/index.js";
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { botDB } = require("../db");
+const { qatarStarsDb } = require("../models/index");
+const { toListTeam } = require("../utils/index");
 
-export const phaseScb = new SlashCommandBuilder()
+const phaseScb = new SlashCommandBuilder()
 .setName('phase')
 .setNameLocalizations({
   'es-ES': 'fase',
@@ -15,7 +15,7 @@ export const phaseScb = new SlashCommandBuilder()
   'en-US': 'Phase of the world.'
 }).toJSON()
 
-export const phaseSlashCommand = async (int, client) => {
+const phaseSlashCommand = async (int, client) => {
   const { locale } = int, isEn = locale == 'en-US'
   const { color } = botDB
 
@@ -26,4 +26,9 @@ export const phaseSlashCommand = async (int, client) => {
   .setTimestamp()
 
   int.reply({embeds: [phaseEb]})
+}
+
+module.exports = {
+  phaseScb,
+  phaseSlashCommand
 }

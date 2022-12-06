@@ -1,11 +1,11 @@
-import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } from "discord.js";
-import { botDB } from "../db.js";
-import { qatarStarsDb } from "../models/index.js";
-import { sendError } from "../utils/index.js";
-import { accentsTidy } from "../utils/index.js";
-import { matches } from "../index.js";
+const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { botDB } = require("../db");
+const { qatarStarsDb } = require("../models/index");
+const { sendError } = require("../utils/index");
+const { accentsTidy } = require("../utils/index");
+const { matches } = require("../index");
 
-export const matchScb = new SlashCommandBuilder()
+const matchScb = new SlashCommandBuilder()
 .setName('match')
 .setNameLocalizations({
   'es-ES': 'partido',
@@ -113,7 +113,7 @@ export const matchScb = new SlashCommandBuilder()
 .setDefaultMemberPermissions(PermissionFlagsBits.Administrator).toJSON()
 
 
-export const matchSlashCommand = async (int, client) => {
+const matchSlashCommand = async (int, client) => {
   const { options, commandName } = int, subcommand = options.getSubcommand(true)
 
   if(subcommand == 'add'){
@@ -154,4 +154,9 @@ export const matchSlashCommand = async (int, client) => {
   if(subcommand == 'edit'){}
 
   if(subcommand == 'delete'){}
+}
+
+module.exports = {
+  matchScb,
+  matchSlashCommand
 }

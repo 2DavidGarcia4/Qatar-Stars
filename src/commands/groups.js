@@ -1,8 +1,8 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
-import { botDB } from "../db.js"
-import { toListTeam } from "../utils/index.js"
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js")
+const { botDB } = require("../db")
+const { toListTeam } = require("../utils/index")
 
-export const gorupsScb = new SlashCommandBuilder()
+const gorupsScb = new SlashCommandBuilder()
 .setName('groups')
 .setNameLocalizations({
   'es-ES': 'grupos',
@@ -14,7 +14,7 @@ export const gorupsScb = new SlashCommandBuilder()
   'en-US': 'All groups.'
 }).toJSON()
 
-export const groupsSlashCommand = async (int, client) => {
+const groupsSlashCommand = async (int, client) => {
   const { options, locale } = int, isEn = locale == 'en-US'
   const { teams } = botDB
   
@@ -31,4 +31,9 @@ export const groupsSlashCommand = async (int, client) => {
   .setTimestamp()
 
   int.reply({embeds: [groupsEb]})
+}
+
+module.exports = {
+  gorupsScb,
+  groupsSlashCommand
 }

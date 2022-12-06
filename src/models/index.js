@@ -1,6 +1,8 @@
-import { model, Schema } from "mongoose";
+const { model, Schema } = require("mongoose");
 
-export const qatarStarsDb = model('qatarStars', new Schema({
+const qatarStarsDb = model('qatarStars', new Schema({
   _id: {type: String, required: true},
   matches: {type: Object, required: true}
 }))
+
+module.exports = {qatarStarsDb}

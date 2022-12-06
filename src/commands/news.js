@@ -1,10 +1,10 @@
-import { EmbedBuilder, SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
-import { botDB } from "../db.js";
-import { emojis } from "../events/ready.js";
-import { accentsTidy, sendError } from "../utils/index.js";
-import { matches } from "../index.js";
+const { EmbedBuilder, SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { botDB } = require("../db");
+const { emojis } = require("../events/ready");
+const { accentsTidy, sendError } = require("../utils/index");
+const { matches } = require("../index");
 
-export const newsScb = new SlashCommandBuilder()
+const newsScb = new SlashCommandBuilder()
 .setName('news')
 .setNameLocalizations({
   'es-ES': 'noticias',
@@ -77,7 +77,7 @@ export const newsScb = new SlashCommandBuilder()
   )
 ).toJSON()
 
-export const newsSlashCommand = async (int) => {
+const newsSlashCommand = async (int) => {
   const { options, locale } = int, isEn = locale == 'en-US'
   const team = options.getString('america') || options.getString('europe') || options.getString('africa') || options.getString('asia') || options.getString('oceania')
 
@@ -102,3 +102,8 @@ export const newsSlashCommand = async (int) => {
   )
   int.reply({embeds: [newsEb], components: [newsArb]})
 } 
+
+module.exports = {
+  newsScb,
+  newsSlashCommand
+}

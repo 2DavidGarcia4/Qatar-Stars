@@ -1,5 +1,5 @@
-import { connect } from "mongoose"
-import { connectDb } from "./config.js"
+const { connect } = require("mongoose")
+const { connectDb } = require("./config")
 
 connect(connectDb)
 .then(()=> console.log('Connected to DB'))
@@ -7,7 +7,7 @@ connect(connectDb)
 
 // guild: 1023968834199228466
 // pr: 825191912830926898
-export const botDB = {
+const botDB = {
   color: '#120A78',
   serverId: '1023968834199228466',
   creatorId: '717420870267830382',
@@ -40,3 +40,5 @@ export const botDB = {
     h: ['portugal', 'ghana', 'uruguay', 'corea del sur']
   }
 }
+
+module.exports = {botDB}

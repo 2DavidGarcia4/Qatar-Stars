@@ -1,19 +1,19 @@
-import { Collection } from "discord.js"
-import { botInfoSlashCommand, botInfoScb } from "../commands/botInfo.js"
-import { timeSlashCommand, timeScb } from "../commands/time.js"
-import { newsSlashCommand, newsScb } from "../commands/news.js"
-import { groupsSlashCommand, gorupsScb } from "../commands/groups.js"
-import { phaseSlashCommand, phaseScb } from "../commands/phase.js"
-import { matchSlashCommand, matchScb } from "../commands/match.js"
+const { Collection } = require("discord.js")
+const { botInfoSlashCommand, botInfoScb } = require("../commands/botInfo")
+const { timeSlashCommand, timeScb } = require("../commands/time")
+const { newsSlashCommand, newsScb } = require("../commands/news")
+const { groupsSlashCommand, gorupsScb } = require("../commands/groups")
+const { phaseSlashCommand, phaseScb } = require("../commands/phase")
+const { matchSlashCommand, matchScb } = require("../commands/match")
 
 const cmds = [timeScb, newsScb, gorupsScb, phaseScb, matchScb, botInfoScb ]
-export const commands = new Collection()
+const commands = new Collection()
 cmds.forEach(cmd=> {
   commands.set(cmd.name, cmd)
 })
 
 
-export const interactionEvent = async (int, client) => {
+const interactionEvent = async (int, client) => {
   if(int.isChatInputCommand()){
     const { commandName } = int
     
@@ -24,4 +24,9 @@ export const interactionEvent = async (int, client) => {
     if(commandName == 'phase') phaseSlashCommand(int, client)
     if(commandName == 'match') matchSlashCommand(int, client)
   }
+}
+
+module.exports = {
+  commands,
+  interactionEvent
 }

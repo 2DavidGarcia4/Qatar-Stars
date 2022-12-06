@@ -1,18 +1,19 @@
-import { commands } from "./interaction.js"
-import { botDB } from "../db.js"
+const { commands } = require("./interaction")
+const { botDB } = require("../db")
 
-export let emojis = []
+let emojis = []
 
-export const readyEvent = async (client) => {
+const readyEvent = async (client) => {
   console.log('Estoy listo', client.user.username)
 
   const server = client.guilds.cache.get(botDB.serverId)
   emojis = server.emojis.cache.map(({name, id})=> ({name, id}))
-  commands.forEach(async cmd=> {
-    if(!(await server.commands.fetch()).some(s=> s.name==cmd.name)){
-      server.commands.create(cmd).then(cm=> console.log('Nuevo comando creado', cm.name))
-    }
-  })
+  // console.log(commands)
+  // commands.forEach(async cmd=> {
+  //   if(!(await server.commands.fetch()).some(s=> s.name==cmd.name)){
+  //     server.commands.create(cmd).then(cm=> console.log('Nuevo comando creado', cm.name))
+  //   }
+  // })
 
   //? time
   //pr: 1031244320994496592
@@ -33,4 +34,9 @@ export const readyEvent = async (client) => {
   // const command = commands.get('botinfo');
   // (await server.commands.fetch('1032708438142238730')).edit({description: command.description, options: command.options}).then(s=> console.log('update command'));
   // ;(await server.commands.fetch('1029496472716197989')).delete().then(c=> console.log('Comando eliminado'))
+}
+
+module.exports = {
+  emojis, 
+  readyEvent
 }

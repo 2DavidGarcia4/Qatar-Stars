@@ -1,6 +1,7 @@
-import { EmbedBuilder } from "discord.js";
-import { botDB } from "../db.js";
-import { emojis } from "../events/ready.js";
+const { EmbedBuilder } = require("discord.js");
+const { botDB } = require("../db");
+const { emojis } = require("../events/ready");
+
 
 function levenshtainDistance(txt1='', txt2='') {
   let res = 0
@@ -31,7 +32,7 @@ function levenshtainDistance(txt1='', txt2='') {
   return res
 }
 
-export const accentsTidy = (text) => {
+const accentsTidy = (text) => {
   let r = text.toLowerCase();
   // r = r.replace(new RegExp(/\s/g),"");
   r = r.replace(new RegExp(/[àáâãäå]/g),"a");
@@ -49,17 +50,24 @@ export const accentsTidy = (text) => {
 };
 
 
-export const sendError = (int, description) => {
+const sendError = (int, description) => {
   const errorEb = new EmbedBuilder({title: 'Error', description})
   .setColor('Red')
 
   int.reply({ephemeral: true, embeds: [errorEb]})
 }
 
-export const toListTeam = (array) => array.map((m, i)=> {
+const toListTeam = (array) => array.map((m, i)=> {
   const emoji = emojis.find(f=> f.name.replace(/_/g, ' ') == accentsTidy(m))
 
   if(emoji) return `<:${emoji.name}:${emoji.id}> ${i+1}. ${m.replace(m[0], m[0].toUpperCase())}`
   else return `${i+1}. ${m.replace(m[0], m[0].toUpperCase())}`
   
 }).join('\n')
+
+module.exports = {
+  levenshtainDistance,
+  accentsTidy,
+  sendError,
+  toListTeam
+}

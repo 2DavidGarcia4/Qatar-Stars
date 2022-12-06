@@ -1,7 +1,7 @@
-import { EmbedBuilder } from "discord.js"
-import { botDB } from "../db.js"
+const { EmbedBuilder } = require("discord.js")
+const { botDB } = require("../db")
 
-export const shardError = (error, client)=> {
+const shardError = (error, client)=> {
   console.log('Error bot:')
   console.log(error.message)
   console.log(error.name)
@@ -14,7 +14,7 @@ export const shardError = (error, client)=> {
   client.channels.cache.get(botDB.channelLogs).send({ embeds: [embErr] })
 }
 
-export const unhandledRejection = (error, client)=> {
+const unhandledRejection = (error, client)=> {
   console.log("Oter error:")
   console.log(error)
   const embErr = new EmbedBuilder()
@@ -23,4 +23,9 @@ export const unhandledRejection = (error, client)=> {
   .setColor("ff0000")
   .setTimestamp()
   client.channels.cache.get(botDB.channelLogs).send({ embeds: [embErr] })
+}
+
+module.exports = {
+  shardError,
+  unhandledRejection
 }

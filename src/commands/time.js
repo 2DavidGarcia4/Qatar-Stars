@@ -1,10 +1,10 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
-import { botDB } from "../db.js"
-import { accentsTidy, sendError } from "../utils/index.js"
-import { matches } from "../index.js"
-import { emojis } from "../events/ready.js"
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js")
+const { botDB } = require("../db")
+const { accentsTidy, sendError } = require("../utils/index")
+const { matches } = require("../index")
+const { emojis } = require("../events/ready")
 
-export const timeScb = new SlashCommandBuilder()
+const timeScb = new SlashCommandBuilder()
 .setName('time')
 .setNameLocalizations({
   'es-ES': 'hora',
@@ -78,7 +78,7 @@ export const timeScb = new SlashCommandBuilder()
 ).toJSON()
 
 
-export const timeSlashCommand = async (int) => {
+const timeSlashCommand = async (int) => {
   const { options, locale } = int, isEn = locale == 'en-US'
  
   const team = options.getString('america') || options.getString('europe') || options.getString('africa') || options.getString('asia') || options.getString('oceania')
@@ -102,4 +102,9 @@ export const timeSlashCommand = async (int) => {
   .setTimestamp()
   int.reply({embeds: [timeEb]})
 
+}
+
+module.exports = {
+  timeScb,
+  timeSlashCommand
 }

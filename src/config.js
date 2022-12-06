@@ -1,6 +1,14 @@
-import { config } from "dotenv"
+const { config } = require("dotenv")
 config()
 
-export const tokenBot = process.env.TOKEN_BOT
-export const tokenFotball = process.env.FOTBALL
-export const connectDb = process.env.CONNECT_DB
+const tokenBot = process.env.TOKEN_BOT
+const tokenFotball = process.env.FOTBALL
+const connectDb = process.env.CONNECT_DB
+const dimencionToken = process.env.DIMENSION_TOKEN
+
+module.exports = {
+  tokenBot,
+  tokenFotball,
+  connectDb,
+  dimencionToken
+}
