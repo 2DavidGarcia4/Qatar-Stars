@@ -40,5 +40,5 @@ const botDB = {
     h: ['portugal', 'ghana', 'uruguay', 'corea del sur']
   }
 }
-
+//que pasa?
 module.exports = {botDB}
