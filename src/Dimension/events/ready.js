@@ -16,7 +16,6 @@ const readyEvent = (client) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     console.log('Estoy listo ' + ((_a = client.user) === null || _a === void 0 ? void 0 : _a.username));
     const server = client.guilds.cache.get(db_1.botDB.serverId);
-    // const server = client.guilds.cache.get('950947559755640873');
     // console.log(server?.emojis.cache.filter(f=> f.animated).map(({name, id}) => ({name, id})))
     // client.user?.edit({avatar: server?.iconURL()})
     // console.log(client.guilds.cache.map(m=> ({name: m.name, id: m.id})))
