@@ -1,5 +1,6 @@
 const { commands } = require("./interaction")
 const { botDB } = require("../db")
+const { EmbedBuilder } = require("discord.js")
 
 let emojis = []
 
@@ -7,6 +8,13 @@ const readyEvent = async (client) => {
   console.log('Estoy listo', client.user.username)
 
   const server = client.guilds.cache.get(botDB.serverId)
+  const channelLog = client.channels.cache.get('1033545825730711552')
+
+  const ReadyEb = new EmbedBuilder()
+  .setTitle('I am ready')
+  .setDescription('Connected again')
+  .setColor('Random')
+  channelLog.send({embeds: [ReadyEb]})
   emojis = server.emojis.cache.map(({name, id})=> ({name, id}))
   // console.log(commands)
   // commands.forEach(async cmd=> {
