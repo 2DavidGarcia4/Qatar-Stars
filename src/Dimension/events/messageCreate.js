@@ -25,5 +25,10 @@ const messageCreateEvent = (msg, client) => __awaiter(void 0, void 0, void 0, fu
         msg.react('1035719304219471913');
         msg.react('938639678603681842');
     }
+
+    if (msg.channelId == '1022914793511850084') {
+        msg.react('1035717696622428170');
+        msg.react('938641123348475914');
+    }
 });
 exports.messageCreateEvent = messageCreateEvent;
