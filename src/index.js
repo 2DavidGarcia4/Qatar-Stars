@@ -1,7 +1,7 @@
 const { ActivityType, Client, EmbedBuilder, time } = require("discord.js");
 const { tokenBot, tokenFotball } = require("./config");
 const { shardError, unhandledRejection } = require("./events/errors")
-// const fetch = require("node-fetch")
+const fetch = require("node-fetch")
 const { botDB } = require("./db");
 const { commands, interactionEvent } = require("./events/interaction");
 const { emojis, readyEvent } = require("./events/ready");
